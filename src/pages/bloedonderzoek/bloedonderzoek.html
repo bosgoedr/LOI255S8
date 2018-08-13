@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-title>Bloedonderzoek</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+  <ion-label floating>Doel van het onderzoek</ion-label>
+  <ion-input></ion-input></ion-item>
+<ion-list>
+  <ion-item>
+    <ion-label>Type onderzoek</ion-label>
+    <ion-select multiple="true">
+      <ion-option value="alg">Allergieën</ion-option>
+      <ion-option value="bse">BSE-test</ion-option>
+      <ion-option value="crp">CRP-test</ion-option>
+      <ion-option value="hb">Hb-test</ion-option>
+      <ion-option value="glucose">Glucose-test</ion-option>
+      <ion-option value="psa">PSA-test</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+<ion-item>
+    <ion-label text-wrap>Bent u hier al eerder op onderzocht?</ion-label><ion-toggle checked="false"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label text-wrap>Bent u hier al eerder voor bij de huisarts geweest? </ion-label><ion-toggle checked="false"></ion-toggle>
+  </ion-item>
+  <ion-item>
+      <ion-label text-wrap>Wilt u vooraf contact met de arts hierover?</ion-label><ion-toggle checked="false"></ion-toggle>
+  </ion-item>
+</ion-content>
+
+<ion-footer>
+<button full ion-button>Verzenden</button>
+</ion-footer>

@@ -1,0 +1,41 @@
+<!--
+  Generated template for the SpoedvervolgPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Spoed</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+          <ion-label>(Vermoedelijk) letsel</ion-label>
+          <ion-select>
+            <ion-option value="breuk">Botbreuk of ernstige kneuzing</ion-option>
+            <ion-option value="bloeding">Bloeding</ion-option>
+            <ion-option value="val">Ernstige val</ion-option>
+            <ion-option value="hoofd">Hoofdletsel</ion-option>
+            <ion-option value="verbrand">Verbranding</ion-option>
+            <ion-option value="od">Overdosis of vergiftiging</ion-option>
+            <ion-option value="bewusteloos">Bewusteloosheid</ion-option>
+            <ion-option value="hersen">Hersenletsel</ion-option>
+            <ion-option value="onbekend">Onbekend en niet te achterhalen</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div text-center>
+        <button ion-button outline small text-wrap (click)="huisartsClick()">Slachtoffer is mobiel en kan vervoer regelen</button>
+        <button ion-button outline small text-wrap (click)="locatieClick()">slachtoffer is niet mobiel en/of kan geen vervoer regelen</button>
+      </div>
+      <ion-item>
+          <ion-label text-wrap>Het slachtoffer heeft alcohol en/of drugs gebruikt.</ion-label><ion-toggle checked="false"></ion-toggle>
+      </ion-item>
+</ion-content>

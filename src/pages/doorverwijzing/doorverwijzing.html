@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-title>Doorverwijzing aanvragen</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+<ion-item><ion-input placeholder="Klachtomschrijving"></ion-input></ion-item>
+<ion-searchbar placeholder="Specialist" showCancelButton color="danger" (ionInput)="filterItems($event)"></ion-searchbar>  
+<ion-list radio-group>
+  <ion-item *ngFor="let item of items">
+    <ion-label>{{ item }}</ion-label>
+    <ion-radio [value]="item"></ion-radio>
+  </ion-item>
+</ion-list>
+<ion-item>
+  <ion-label text-wrap>Bent u al eerder voor deze klacht behandeld?</ion-label><ion-toggle checked="false"></ion-toggle>
+</ion-item>
+<ion-item>
+  <ion-label text-wrap>Bent u al eerder bij deze specialist geweest?</ion-label><ion-toggle checked="false"></ion-toggle>
+</ion-item>
+<ion-item>
+    <ion-label text-wrap>Wilt u vooraf contact met de arts hierover?</ion-label><ion-toggle checked="false"></ion-toggle>
+</ion-item>
+</ion-content>
+
+<ion-footer>
+  <button full ion-button>Verzenden</button>
+</ion-footer>

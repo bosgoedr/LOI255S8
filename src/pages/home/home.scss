@@ -1,3 +1,23 @@
 page-home {
+    .box-container {
+        display: table;
+        height: 100%;
+        width: 100%;
+        }
+        
+        .box-row {
+        display: table-row;
+        }
+        
+        .box-col {
+        display: table-cell;
+        padding: 0px !important;
+        border: thin dashed black;
+        text-align: center;
+        vertical-align: middle;
+        }
 
+    ion-icon {
+            font-size: 30px; //Preferred size here
+        }
 }

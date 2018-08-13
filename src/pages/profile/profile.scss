@@ -1,0 +1,24 @@
+page-profile {
+
+    .circle-pic{
+        width:130px;
+        height:130px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .imagebox{
+        text-align: center;
+    }
+
+    .patientInfo{
+        font-size: large;
+    }
+
+    ion-content .scroll-content {
+        overflow : auto !important;
+    }    
+}

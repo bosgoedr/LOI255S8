@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar hideBackButton="true">
+    <ion-title>Consult aanvraag</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-calendar [(ngModel)]="date"
+(onChange)="onChange($event)"
+[type]="type"
+[format]="'YYYY-MM-DD'">
+</ion-calendar>
+
+<ion-list>
+<ion-item>
+  <ion-label>Consult</ion-label>
+  <ion-select>
+    <ion-option value="kort">kort</ion-option>
+    <ion-option value="lang">lang</ion-option>
+  </ion-select>
+</ion-item>
+</ion-list>
+
+<ion-item>
+<ion-label floating>Klacht</ion-label>
+<ion-input></ion-input>
+</ion-item>
+</ion-content>
+
+<ion-footer>
+<button full ion-button>inplannen</button>
+</ion-footer>
