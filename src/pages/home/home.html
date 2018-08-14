@@ -8,20 +8,20 @@
  
 <div class="box-container" >
     <div class="box-row">
-      <div class="box-col" (click)="openChat()"><ion-icon name="chatbubbles"></ion-icon><br>chat</div>
-      <div class="box-col" (click)="openConsult()"><ion-icon name="calendar"></ion-icon><br>consultaanvraag</div>
+      <div class="box-col" [class.box-selected]="col1" (click)="openChat()"><ion-icon name="chatbubbles"></ion-icon><br>chat</div>
+      <div class="box-col" [class.box-selected]="col2" (click)="openConsult()"><ion-icon name="calendar"></ion-icon><br>consultaanvraag</div>
     </div>
     <div class="box-row">
-      <div class="box-col" (click)="openDoorverwijzing()"><ion-icon name="share-alt"></ion-icon><br>Doorverwijzing</div>
-      <div class="box-col" (click)="openBloedonderzoek()"><ion-icon name="search"></ion-icon><br>bloedonderzoek</div>
+      <div class="box-col" [class.box-selected]="col3" (click)="openDoorverwijzing()"><ion-icon name="share-alt"></ion-icon><br>Doorverwijzing</div>
+      <div class="box-col" [class.box-selected]="col4" (click)="openBloedonderzoek()"><ion-icon name="search"></ion-icon><br>bloedonderzoek</div>
     </div>
     <div class="box-row">
-      <div class="box-col" (click)="openBerichten()"><ion-icon name="filing"></ion-icon><br>Berichten</div>
-      <div class="box-col" (click)="openEpd()"><ion-icon name="clipboard"></ion-icon><br>EPD</div>
+      <div class="box-col" [class.box-selected]="col5" (click)="openBerichten()"><ion-icon name="filing"></ion-icon><br>Berichten</div>
+      <div class="box-col" [class.box-selected]="col6" (click)="openEpd()"><ion-icon name="clipboard"></ion-icon><br>EPD</div>
     </div>
     <div class="box-row">
-      <div class="box-col" (click)="openMedicijnen()"><ion-icon name="medkit"></ion-icon><br>Mijn medicijnen</div>
-      <div class="box-col" (click)="openSpoed()"><ion-icon name="help-buoy"></ion-icon><br>SPOED!!</div>
+      <div class="box-col" [class.box-selected]="col7" (click)="openMedicijnen()"><ion-icon name="medkit"></ion-icon><br>Mijn medicijnen</div>
+      <div class="box-col" [class.box-selected]="col8" (click)="openSpoed()"><ion-icon name="help-buoy"></ion-icon><br>SPOED!!</div>
     </div>
   </div>
 

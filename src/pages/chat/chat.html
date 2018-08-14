@@ -7,16 +7,26 @@
 </ion-header>
   
   
-<ion-content padding>
-  <img height="60" src="assets/imgs/doctor.png"  style="float: right"/>
-  <div class="chat-message">
-    <div class="chat-message right">
-    Goedendag Robert, waarmee kan ik je helpen?
-    </div>
-    <div class="chat-message left">
-      Hallo dr Janssen, ik heb last van mijn knie
-    </div>
-  </div>
+<ion-content>
+    <ion-grid class="NoPadding">
+        <ion-row class="NoPadding">
+          <ion-col class="NoPadding">
+             <div class="chat-message">
+                <div class="chat-message right">
+                Goedendag Robert, waarmee kan ik je helpen?
+                </div>
+                <div class="chat-message left">
+                  Hallo dr Janssen, ik heb last van mijn knie
+                </div>
+              </div>
+        </ion-col>
+        <ion-col col-auto>
+          <div class="DoctorIco">
+            <img class="DoctorIco" height="60" src="assets/imgs/doctor.png">
+          </div>
+      </ion-col>
+    </ion-row>
+</ion-grid>
 
 </ion-content>
   
@@ -27,7 +37,7 @@
       </ion-avatar>
       <ion-input type="text" placeholder="stel uw vraag" [(ngModel)]="chatMsg"></ion-input>
       <ion-note item-end>
-        <ion-icon (click)="takePhoto()" name="camera" item-right></ion-icon>
+        <ion-icon (click)="takePhoto()" name="camera" item-right class="chatbutton"></ion-icon>
         <ion-icon (click)="sendChat()" name="md-send" item-right></ion-icon>
       </ion-note>
     </ion-item>

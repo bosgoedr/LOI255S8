@@ -7,7 +7,7 @@ let infowindow: any;
 let options = {
   enableHighAccuracy: true,
   timeout: 5000,
-  maximumAge: Infinity 
+  maximumAge: 0 
 };
 
 @Component({
@@ -33,11 +33,19 @@ export class HuisartslocatiePage {
   }
 
   ionViewDidLoad() {
-    let TIME_IN_MS = 4000;
+    let TIME_IN_MS = 5000;
     setTimeout( () => {
-      this.eersteHuisarts = this.tmpDoctor;
-      this.adresHuisarts = this.tmpAddress;
-      this.afstand = Math.round(this.tmpAfstand * 100) / 100
+      this.afstand = Math.round(this.tmpAfstand * 100) / 100;
+      if(this.afstand > 0){
+        this.eersteHuisarts = this.tmpDoctor;
+        this.adresHuisarts = this.tmpAddress;
+      }
+      else
+      {
+        this.eersteHuisarts = "Slecht GPS signaal";
+        this.adresHuisarts = "Herlaad de pagina";
+      }
+      
       console.log('ionViewDidLoad Huisartslocatie');
     }, TIME_IN_MS);
   }
@@ -85,8 +93,8 @@ export class HuisartslocatiePage {
         this.showDetail = false;
       });
     }, (error) => {
-      this.alertError();
-      console.log(error);
+      this.showReloadAlert();
+      console.log(error);    
     }, options);
 
     // Zet huidige locatie
@@ -181,4 +189,26 @@ export class HuisartslocatiePage {
     alert.present();
   }
 
+  showReloadAlert() {
+    const confirm = this.alertCtrl.create({
+      title: 'Locatie niet gevonden',
+      message: 'Klik op "Herladen" om het nogmaals te proberen, of op "Sluiten" om de zoekactie te annuleren',
+      buttons: [
+        {
+          text: 'Sluiten',
+          handler: () => {
+            console.log('Sluiten clicked');
+          }
+        },
+        {
+          text: 'Herladen',
+          handler: () => {
+            console.log('Herladen clicked');
+            this.navCtrl.push(HuisartslocatiePage);  
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 }

@@ -4,6 +4,12 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Storage } from '@ionic/storage';
 import { SpoedPage } from '../spoed/spoed';
 
+let options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0 
+};
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -23,14 +29,24 @@ export class LoginPage {
   patTelefoon: string;
   patEmail: string;
 
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl: AlertController, private storage: Storage) {
     this.pinInput = [null,null,null,null]
     this.isPinCodeSet();
     this.getPatientEmail();
+    this.initGPS();
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() {    
     console.log('ionViewDidLoad LoginPage');
+  }
+  
+  initGPS() {
+    navigator.geolocation.getCurrentPosition((location) => {
+      console.log(location.coords.latitude, location.coords.longitude);
+    }, (error) => {
+      console.log(error);    
+    }, options); 
   }
 
   getPatientEmail(){
@@ -89,7 +105,6 @@ export class LoginPage {
           console.log ('Inloggen maar');
           
           this.navCtrl.setRoot(TabsPage);
-         // this.navCtrl.push(TabsPage)
         }
         else{
           console.log ('foutieve code')
@@ -185,7 +200,6 @@ export class LoginPage {
       }
     }
 
-     //this.pinInput[1] = intCode;
     console.log('Your code is', this.pinInput[0],this.pinInput[1],this.pinInput[2],this.pinInput[3]);
 
   }

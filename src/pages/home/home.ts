@@ -15,45 +15,68 @@ import { MedicijnPage } from '../medicijn/medicijn';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController) {
-
-  }
-
-  openLogin(){
-    this.navCtrl.push(LoginPage)
-  }
+  col1: boolean=false;
+  col2: boolean=false;
+  col3: boolean=false;
+  col4: boolean=false;
+  col5: boolean=false;
+  col6: boolean=false;
+  col7: boolean=false;
+  col8: boolean=false;
   
-  openSpoed(){
-    this.navCtrl.push(SpoedPage);
+  constructor(public navCtrl: NavController, public loadingCtrl:LoadingController) {
+  }
+
+  ionViewDidLeave(){
+    this.col1 =false;
+    this.col2 =false;
+    this.col3 =false;
+    this.col4 =false;
+    this.col5 =false;
+    this.col6 =false;
+    this.col7 =false;
+    this.col8 =false;
+    
   }
 
   openChat(){
+    this.col1 = true;
     this.navCtrl.push(ChatPage);
   }
 
   openConsult(){
+    this.col2 = true;
     this.navCtrl.push(ConsultPage);
   }
 
   openDoorverwijzing(){
+    this.col3 = true;
     this.navCtrl.push(DoorverwijzingPage);
   }
 
   openBloedonderzoek(){
+    this.col4 = true;
     this.navCtrl.push(BloedonderzoekPage);
   }
 
   openBerichten(){
+    this.col5 = true;
     this.navCtrl.push(BerichtenPage);
   }
 
   openEpd(){
+    this.col6 = true;
     this.navCtrl.push(EpdPage);
   }
   
   openMedicijnen(){
+    this.col7 = true;
     this.navCtrl.push(MedicijnPage);
+  }
+
+  openSpoed(){
+    this.col8 = true;
+    this.navCtrl.push(SpoedPage);
   }
 
   logout(){

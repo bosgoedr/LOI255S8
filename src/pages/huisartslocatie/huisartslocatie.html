@@ -20,23 +20,17 @@
   <ion-card class="adv-map">
     <ion-item>
       <ion-icon color="subtle" large item-start name='home'></ion-icon>
-      <h2>{{ eersteHuisarts }}</h2>
+      <h2 text-wrap>{{ eersteHuisarts }}</h2>
       <p>{{ adresHuisarts }}</p>
     </ion-item>
     <ion-item actions>
       <!-- <span ion-text item-start class="item-bold">26 min</span> -->
-      <span ion-text item-start color="subtle">({{ afstand }} km)</span>
+      <span>({{ afstand }} km)</span>
       <button ion-button clear item-end icon-start>
         <ion-icon name='navigate'></ion-icon>Start</button>
     </ion-item>
   
   </ion-card>
 
-  <!-- <div #detail id="detail">Ga naar dichtsbijzijnde huisarts<br> <b> {{ eersteHuisarts }}</b><br>
-        {{ adresHuisarts }}<br>
-        ze zijn op de hoogte van uw komst </div> -->
-  <!-- <div #detail id="detail" *ngIf="showDetail; then thenBlock; else elseBlock"></div>
-       <ng-template #elseBlock>Dichstbijzijnde huisarts wordt gezocht</ng-template>
-       <ng-template #thenBlock>Ga naar: {{ huisarts }} . Men is op de hoogte van uw komst</ng-template> -->
 </ion-content>
 

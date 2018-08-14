@@ -2,10 +2,10 @@ page-chat {
     .chat-message {
       border-radius: 5px;
       display: inline-block;
-      padding: 10px 18px;
+      padding: 10px 10px;
       position: relative;
       margin: 10px;
-      max-width: 90%;
+      max-width: 100%;
     }
     .chat-message:before {
       content: "\00a0";
@@ -36,5 +36,16 @@ page-chat {
       -webkit-transform: rotate(70deg) skew(5deg);
       transform: rotate(70deg) skew(5deg);
     } 
-  
+
+    .NoPadding{
+      padding: 0px;
+    }
+
+    .DoctorIco{
+      padding: 2px;
+    }
+
+    .chatbutton:before{
+      margin: 0 5px;
+    }
 }
