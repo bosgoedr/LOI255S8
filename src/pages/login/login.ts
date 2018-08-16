@@ -149,7 +149,7 @@ export class LoginPage {
   alertPincodeSet() {
     const alert = this.alertCtrl.create({
       title: 'Pincode aangemaakt',
-      subTitle: 'HuisartsenApp 2022 is klaar voor gebruik',
+      subTitle: 'HuisartsenApp is klaar voor gebruik',
       buttons: ['OK']
     });
     alert.present();

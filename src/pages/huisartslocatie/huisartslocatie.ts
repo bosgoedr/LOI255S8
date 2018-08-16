@@ -33,21 +33,7 @@ export class HuisartslocatiePage {
   }
 
   ionViewDidLoad() {
-    let TIME_IN_MS = 5000;
-    setTimeout( () => {
-      this.afstand = Math.round(this.tmpAfstand * 100) / 100;
-      if(this.afstand > 0){
-        this.eersteHuisarts = this.tmpDoctor;
-        this.adresHuisarts = this.tmpAddress;
-      }
-      else
-      {
-        this.eersteHuisarts = "Slecht GPS signaal";
-        this.adresHuisarts = "Herlaad de pagina";
-      }
-      
-      console.log('ionViewDidLoad Huisartslocatie');
-    }, TIME_IN_MS);
+    this.loadNearestHuisarts();
   }
 
   initMap() {
@@ -94,7 +80,7 @@ export class HuisartslocatiePage {
       });
     }, (error) => {
       this.showReloadAlert();
-      console.log(error);    
+      console.log("herladen ja/nee",error);    
     }, options);
 
     // Zet huidige locatie
@@ -129,7 +115,7 @@ export class HuisartslocatiePage {
       console.log("blue dot", geoMarker)
     }, (error) => {
      // this.alertError();
-      console.log(error);
+      console.log("blue dot error",error);
     }, options);
   }
 
@@ -173,6 +159,7 @@ export class HuisartslocatiePage {
       ; 
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
     var d = R * c; // Distance in km
+    console.log(lat1,lon1,lat2,lon2);
     return d;
    }
 
@@ -187,6 +174,24 @@ export class HuisartslocatiePage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  loadNearestHuisarts(){
+    let TIME_IN_MS = 5000;
+    setTimeout( () => {
+      this.afstand = Math.round(this.tmpAfstand * 100) / 100;
+      if(this.afstand > 0){
+        this.eersteHuisarts = this.tmpDoctor;
+        this.adresHuisarts = this.tmpAddress;
+      }
+      else
+      {
+        this.eersteHuisarts = "Slecht GPS signaal";
+        this.adresHuisarts = "Herlaad de pagina";
+      }
+      
+      console.log('Huisartslocatie geladen');
+    }, TIME_IN_MS);
   }
 
   showReloadAlert() {
@@ -204,7 +209,14 @@ export class HuisartslocatiePage {
           text: 'Herladen',
           handler: () => {
             console.log('Herladen clicked');
-            this.navCtrl.push(HuisartslocatiePage);  
+            options = {
+              enableHighAccuracy: true,
+              timeout: 5000,
+              maximumAge: Infinity 
+            };
+            this.initMap();
+            this.setBlueDot();
+            this.loadNearestHuisarts();
           }
         }
       ]
