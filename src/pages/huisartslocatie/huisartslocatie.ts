@@ -22,6 +22,7 @@ export class HuisartslocatiePage {
   afstand;
   adresHuisarts;
   showDetail: boolean = true;
+  noArts: boolean = false;
 
   @ViewChild('map') mapElement: ElementRef;
 
@@ -39,12 +40,8 @@ export class HuisartslocatiePage {
   initMap() {
     navigator.geolocation.getCurrentPosition((location) => {
 
-  //    this.startCentre = {lat: location.coords.latitude, lng: location.coords.longitude};
-  //    console.log(this.startCentre);
-
       map = new google.maps.Map(this.mapElement.nativeElement, {
         center: {lat: location.coords.latitude, lng: location.coords.longitude},
-  //      center: this.startCentre,
         zoom: 15
       });
 
@@ -59,10 +56,10 @@ export class HuisartslocatiePage {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
 
           for (var i = 0; i < results.length; i++) {
-            if (results[i].name.includes("uisarts")) {
+            if (results[i].name.toLowerCase().includes("huisarts")) {
               this.createMarker(results[i]);
               //zet eerste huisarts
-              if (!this.tmpDoctor.includes("uisarts")){
+              if (!this.tmpDoctor.toLowerCase().includes("huisarts")){
                 this.tmpDoctor = results[i].name;
                 this.tmpAddress = results[i].vicinity;
                 this.tmpAfstand = this.getDistanceFromLatLonInKm(location.coords.latitude, location.coords.longitude,results[i].geometry.location.lat(), results[i].geometry.location.lng());
@@ -71,7 +68,6 @@ export class HuisartslocatiePage {
               console.log(results[i])
             }  
            else{
-              // this.createMarker(results[i],"doctor");
                console.log("Geen huisarts");
             }            
           }
@@ -79,12 +75,10 @@ export class HuisartslocatiePage {
         this.showDetail = false;
       });
     }, (error) => {
+      this.noArts = false;
       this.showReloadAlert();
       console.log("herladen ja/nee",error);    
     }, options);
-
-    // Zet huidige locatie
-  //  this.setBlueDot();
   }
 
   setBlueDot(){
@@ -114,7 +108,6 @@ export class HuisartslocatiePage {
       }); 
       console.log("blue dot", geoMarker)
     }, (error) => {
-     // this.alertError();
       console.log("blue dot error",error);
     }, options);
   }
@@ -123,9 +116,6 @@ export class HuisartslocatiePage {
     let placeLoc = place.geometry.location;
     let image
     let marker
-
- //   this.eersteHuisarts = this.tmpDoctor;
- //   this.adresHuisarts = this.tmpAddress;
     
     image = {
       url: 'https://maps.gstatic.com/mapfiles/place_api/icons/doctor-71.png',
@@ -144,8 +134,6 @@ export class HuisartslocatiePage {
         '<br>' + place.vicinity + '</div>');
       infowindow.open(map, this);
     });
- //   this.eersteHuisarts = this.tmpDoctor;
- //   this.adresHuisarts = this.tmpAddress;
   } 
 
   getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
@@ -167,16 +155,8 @@ export class HuisartslocatiePage {
     return deg * (Math.PI/180)
    }
 
-  alertError() {
-    const alert = this.alertCtrl.create({
-      title: 'Locatie niet gevonden',
-      subTitle: 'Probeer het nogmaals',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
   loadNearestHuisarts(){
+    this.noArts = false;
     let TIME_IN_MS = 5000;
     setTimeout( () => {
       this.afstand = Math.round(this.tmpAfstand * 100) / 100;
@@ -188,6 +168,7 @@ export class HuisartslocatiePage {
       {
         this.eersteHuisarts = "Slecht GPS signaal";
         this.adresHuisarts = "Herlaad de pagina";
+        this.noArts = true;
       }
       
       console.log('Huisartslocatie geladen');
@@ -214,6 +195,8 @@ export class HuisartslocatiePage {
               timeout: 5000,
               maximumAge: Infinity 
             };
+            this.eersteHuisarts = "";
+            this.adresHuisarts = "";
             this.initMap();
             this.setBlueDot();
             this.loadNearestHuisarts();
